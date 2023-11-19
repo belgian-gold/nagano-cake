@@ -109,9 +109,7 @@ get "/admin/orders/history/:id", to: "admin/orders#index", as: "history"
     sessions: 'public/sessions'
   }
 
-
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-
     sessions: "admin/sessions"
   }
 
