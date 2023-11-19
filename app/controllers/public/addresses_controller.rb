@@ -13,4 +13,11 @@ class Public::AddressesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def address_params
+    params.require(:address).permit(:post_code, :address, :name)
+  end
+
 end
