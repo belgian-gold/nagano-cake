@@ -1,2 +1,2 @@
-module Adimin::OrdersHelper
+module Admin::OrdersHelper
 end

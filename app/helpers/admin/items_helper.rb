@@ -1,2 +1,2 @@
-module Adimin::ItemsHelper
+module Admin::ItemsHelper
 end

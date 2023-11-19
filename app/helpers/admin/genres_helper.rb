@@ -1,2 +1,2 @@
-module Adimin::GenresHelper
+module Admin::GenresHelper
 end
