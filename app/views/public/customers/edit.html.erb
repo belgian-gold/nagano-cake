@@ -1,2 +1,47 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">
+      会員情報編集
+    </h5>
+  </div>
+  <br>
+  
+
+  <div class="row d-flex justify-content-center">
+    <div>
+      <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+        <tr>
+          <td>氏名</td>
+          <td><%= f.text_field :first_name, class: "rounded mr-5" %>
+          <%= f.text_field  :last_name, class: "rounded mr-5" %></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td><%= f.text_field :first_name_kana, class: "rounded mr-5" %>
+          <%= f.text_field  :last_name_kana, class: "rounded mr-5" %></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= f.text_field :postal_code, class: "rounded mr-5" %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, class: "rounded mr-5" %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.text_field :telephone_number, class: "rounded mr-5" %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.text_field :email_address, class: "rounded mr-5" %></td>
+        </tr>
+        <tr>
+        <td><%= f.submit "編集内容を保存", class: "btn btn-primary" %></td>
+        <td><%= link_to '退会', customers_check_path %></td>
+        </tr>
+      <% end %>
+       <%= link_to 'Back', customer_path %>
+    </div>
+  </div>
+</div>
