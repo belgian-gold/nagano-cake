@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Adimin::GenresControllerTest < ActionDispatch::IntegrationTest
+class Admin::GenresControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get admin_genres_index_url
     assert_response :success
