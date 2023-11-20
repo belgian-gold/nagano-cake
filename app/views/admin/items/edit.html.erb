@@ -6,7 +6,7 @@
       <table class="table table-borderless">
         <tr>
           <td>商品画像</td>
-          <td><%= f.file_field :image, accept: "image/*", class: "rounded" %></td>
+          <td><%= f.file_field :itemimage, accept: "image/*", class: "rounded" %></td>
         </tr>
 
         <tr>
@@ -35,11 +35,11 @@
       <tr>
         <td>販売ステータス</td>
         <td>
-          <%= f.radio_button :is_sales_statu, :true %>
-          <%= f.label :is_sales_statu, "販売中", { value: :false }  %>
+          <%= f.radio_button :is_sales_status, :true %>
+          <%= f.label :is_sales_status, "販売中", { value: :false }  %>
 
-          <%= f.radio_button :is_sales_statu, :true %>
-          <%= f.label :is_sales_statu, "販売停止中", { value: :true } %>
+          <%= f.radio_button :is_sales_status, :true %>
+          <%= f.label :is_sales_status, "販売停止中", { value: :true } %>
         </td>
       </tr>
     </table>
