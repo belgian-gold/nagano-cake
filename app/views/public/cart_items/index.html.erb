@@ -1,2 +1,24 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h1>ショッピングカート</h1>
+destroy_all_btm
+<table class = "table table-bordered">
+ <thead class = "thead-secondary">
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+  </tr>
+ </thead>
+ 
+ <tbody>
+   <tr>
+     <th>get_item_image</th>
+     <th>item.name</th>
+     <th>item.price</th>
+     <th>item.amount</th>
+     <th>item.price*item.amount</th>
+     <th>destroy_btm</th>
+   </tr>
+ </tbody>
+</table>
