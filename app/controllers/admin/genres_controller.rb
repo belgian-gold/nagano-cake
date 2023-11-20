@@ -30,6 +30,7 @@ class Admin::GenresController < ApplicationController
   end
 
 
+
 private
 
   def genre_params
@@ -37,3 +38,4 @@ private
   end 
 
 end
+
