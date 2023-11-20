@@ -6,7 +6,7 @@
 
   </div>
   <br>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_with(model: Customer.new, url: customer_registration_path) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="row d-flex justify-content-center">
@@ -18,7 +18,7 @@
       <%= f.label :last_name, "(姓)" %>
     </div>
     <div class="col-2">
-      <%= f.text_field :last_name , placeholder: "令和", class: "rounded" %>
+      <%= f.text_field :last_name, placeholder: "令和", class: "rounded" %>
     </div>
     <div class="col-1">
       <%= f.label :first_name, "(名)", class: "rounded" %>
@@ -35,16 +35,16 @@
       フリガナ
     </div>
     <div class="col-1">
-      <%= f.label :furigana_last_name, "(セイ)" %>
+      <%= f.label :last_name_kana, "(セイ)" %>
     </div>
     <div class="col-2">
-      <%= f.text_field :furigana_last_name, placeholder: "レイワ", class: "rounded" %>
+      <%= f.text_field :last_name_kana, placeholder: "レイワ", class: "rounded" %>
     </div>
     <div class="col-1">
-      <%= f.label :furigana_first_name, "(メイ)" %>
+      <%= f.label :first_name_kana, "(メイ)" %>
     </div>
     <div class="col-4">
-      <%= f.text_field :furigana_first_name, placeholder: "ミチコ", class: "rounded" %>
+      <%= f.text_field :first_name_kana, placeholder: "ミチコ", class: "rounded" %>
     </div>
   </div>
 
@@ -61,10 +61,10 @@
   <div class="row d-flex justify-content-center">
     <div class="col-2"></div>
     <div class="col-3">
-      <%= f.label :post_code,"郵便番号(ハイフンなし)", class: "rounded" %>
+      <%= f.label :postal_code,"郵便番号(ハイフンなし)", class: "rounded" %>
     </div>
     <div class="col-7">
-      <%= f.text_field :post_code, placeholder: "0000000", class: "rounded" %>
+      <%= f.text_field :postal_code, placeholder: "0000000", class: "rounded" %>
     </div>
   </div>
 
@@ -81,10 +81,10 @@
   <div class="row d-flex justify-content-center">
      <div class="col-2"></div>
     <div class="col-3">
-      <%= f.label :tel_number, "電話番号(ハイフンなし)" %>
+      <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
     </div>
     <div class="col-7">
-      <%= f.text_field :tel_number, placeholder: "0000000000", class: "rounded" %>
+      <%= f.text_field :telephone_number, placeholder: "0000000000", class: "rounded" %>
     </div>
   </div>
 
