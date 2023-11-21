@@ -1,4 +1,5 @@
- #before_action :authenticate_メソッド!でログインしている認証を実行する。
+class ApplicationController < ActionController::Base
+  #before_action :authenticate_メソッド!でログインしている認証を実行する。
 
   before_action :authenticate_customer!, except: [:top,:about], unless: :admin_url
   # before_action :authenticate_admin!, if: :admin_url 
@@ -11,7 +12,8 @@
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-	@@ -17,15 +17,15 @@ def after_sign_in_path_for(resource)
+      admin_path
+    when Customer
       root_path
     end
   end
