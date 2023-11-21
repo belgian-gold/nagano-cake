@@ -4,15 +4,16 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
-    if @customer.update(genre_params)
+    @customer = current_customer
+    if @customer.update(customer_params)
       flash[:notice] = "変更が完了いたしました"
-      redirect_to customer_path
+      redirect_to customers_my_page_path
     else
+      @customer = current_customer
       render :edit
     end
   end
