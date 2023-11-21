@@ -9,6 +9,7 @@
   <div class="row d-flex justify-content-center">
     <div>
       <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+       <table>
         <tr>
           <td>氏名</td>
           <td><%= f.text_field :first_name, class: "rounded mr-5" %>
@@ -39,8 +40,9 @@
         <td><%= f.submit "編集内容を保存", class: "btn btn-primary" %></td>
         <td><%= link_to '退会', customers_check_path %></td>
         </tr>
+        </table>
       <% end %>
-       <%= link_to 'Back', customer_path %>
+       <%= link_to 'Back', customers_my_page_path %>
     </div>
   </div>
 </div>
