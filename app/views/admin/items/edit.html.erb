@@ -2,11 +2,11 @@
 
 <%#= render "layouts/errors", obj: @item %>
 
-  <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+  <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
       <table class="table table-borderless">
         <tr>
           <td>商品画像</td>
-          <td><%= f.file_field :itemimage, accept: "image/*", class: "rounded" %></td>
+          <td><%= f.file_field :item_image, accept: "image/*", class: "rounded" %></td>
         </tr>
 
         <tr>
@@ -36,16 +36,16 @@
         <td>販売ステータス</td>
         <td>
           <%= f.radio_button :is_sales_status, :true %>
-          <%= f.label :is_sales_status, "販売中", { value: :false }  %>
+          <%= f.label :is_sales_status, "販売中", { value: :true }  %>
 
-          <%= f.radio_button :is_sales_status, :true %>
-          <%= f.label :is_sales_status, "販売停止中", { value: :true } %>
+          <%= f.radio_button :is_sales_status, :false %>
+          <%= f.label :is_sales_status, "販売停止中", { value: :false } %>
         </td>
       </tr>
     </table>
     <div class="row d-flex justify-content-center">
       <tr>
-        <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+        <td><%= f.submit "変更を保存する", class:"btn btn-success" %></td>
       </tr>
     </div>
     <% end %>
