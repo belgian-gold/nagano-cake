@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     get "customers/my_page" => "customers#show"
     get 'customers/check' => "customers#check"
     patch 'customers/withdraw' => 'customers#withdraw'
-    resources :customers, only: [:edit, :update,]
+    resources :customers, only: [:edit, :update]
   end
 
 
