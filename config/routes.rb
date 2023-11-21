@@ -1,6 +1,6 @@
 # Rails.application.routes.draw do
-  
-    
+
+
 # # 顧客用
 # # URL /customers/sign_in ...
 # devise_for :customers,skip: [:passwords], controllers: {
@@ -25,7 +25,7 @@
 #     root to: 'public/homes#top'
 #     get "/about" => "public/homes#about"
 #   end
-  
+
 #   namespace :admin do
 #     resources :order_details, only: [:update]
 #     resources :orders, only: [:update, :show]
@@ -34,8 +34,8 @@
 #     resources :items, only: [:index, :new, :create, :show, :edit, :update]
 #     get "/admin" => "admin/homes#top"
 #   end
-  
-  
+
+
 # end
 
 
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     get "customers/my_page" => "customers#show"
     get 'customers/check' => "customers#check"
     patch 'customers/withdraw' => 'customers#withdraw'
-    resources :customers, only: [:edit, :update]
+    resources :customers, only: [:edit, :update,]
   end
 
 
