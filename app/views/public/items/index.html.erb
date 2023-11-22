@@ -1,38 +1,39 @@
-<div class="row d-flex justify-content-center">
-    <h4 style="display: inline-block; font-weight: bold;">商品一覧</h4>
-    <h5 style="display: inline-block;">(全<%= @all_items.count %>件)</h5>
+<div>
+    <h4>商品一覧</h4>
+    <h5>(全<%= @all_items.count %>件)</h5>
   </div>
   <br>
-  <div class="item-wrap">
+  <div>
 
 
     <% @items.each do |item| %>
 
-      <div class="item-box">
+      <div>
         <%= link_to item_path(item) do %>
-          <%= image_tag item.get_item_image(180,150) %>
+          <%= image_tag item.get_item_image, size: "180x150" %>
         <% end %>
 
-        <div class="item-comment">
-          <span class="item-name">
+        <div>
+          <span>
             <%= link_to item_path(item.id) do %>
             <%= item.name %>
             <% end %>
           </span>
           <br>
-          <span class="item-price">￥<%= (item.price * 1.10).round %></span>
-          <!-- if item.is_active %>-->
-          <!-- <p class="text-success"><strong>販売中</strong></p>-->
-          <!--  elsif %>-->
-          <!-- <p class="text-warning"><strong>販売停止</strong></p>-->
-          <!--   end %>-->
+          <span>￥<%= (item.price * 1.10).round %></span>
+           <% if item.is_sales_status %>
+           <p><strong>販売中</strong></p>
+            <% elsif %>
+           <p><strong>販売停止</strong></p>
+             <% end %>
           
         </div>
       </div>
 
 
     <% end %>
-  <!--</div>-->
-  <!--  <div class="d-flex justify-content-center">-->
-  <!--   paginate @items, theme: 'bootstrap-5' %>-->
-  <!--  </div>-->
+  </div>
+  <!--<div>-->
+    <!--<div class="d-flex justify-content-center">-->
+    <!-- paginate @items, theme: 'bootstrap-5' %>-->
+    <!--</div>-->

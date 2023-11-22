@@ -1,24 +1,24 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <%= image_tag @item.get_item_image(400,500)%>
+<div>
+  <div>
+    <div>
+      <%= image_tag @item.get_item_image, size: "600x400"%>
     </div>
-    <div class="col-md-6">
-      <table class="table table-borderless">
+    <div>
+      <table>
         <tr>
-          <td><h3 style="font-weight: bold;"><%= @item.name %></h3></td>
+          <td><h3><%= @item.name %></h3></td>
         </tr>
         <tr>
           <td><h4><%= @item.name_explanation %></h4></td>
         </tr>
         <tr>
-          <td><h3 style="font-weight: bold;">¥<%= @item.with_tax_price %>(税込)</h3></td>
+          <td><h3>¥<%= @item.with_tax_price %>(税込)</h3></td>
         </tr>
         <tr>
           <td>
-            <% if @item.is_active %>
+            <% if @item.is_sales_status %>
               <% if customer_signed_in? %>
-                <p class="text-success">
+                <p>
                   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
                     <%= f.hidden_field :customer_id, :value => current_customer.id %>
                     <%= f.hidden_field :item_id, :value => @item.id %>
@@ -27,12 +27,12 @@
                   <% end %>
                 </p>
               <% else %>
-                <p class="text-secondary">
+                <p>
                   <%= link_to "購入にはログインが必要です", new_customer_session_path, class: "btn btn-warning" %>
                 </p>
               <% end %>
             <% elsif %>
-             <p class="btn btn-outline-warning">売り切れ</p>
+             <p class="btn btn-outline-warning">販売停止</p>
             <% end %>
           </td>
         </tr>
