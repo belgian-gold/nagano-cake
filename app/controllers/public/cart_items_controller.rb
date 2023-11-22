@@ -12,7 +12,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy
     @cart_item = CartItem.find(params[:id])
-    @cart_item.destroy
+    @cart_item.delete
     flash[:notice] = "カートの商品を削除しました"
     redirect_to cart_items_path
   end
@@ -49,7 +49,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   private
-  
+
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
