@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
       unless params[:order][:registered_address_id] ==""
         #各条件内にて selected~ 選択された情報を格納
         selected = Address.find(params[:order][:registered_address_id])
-        @selected_address = selected.post_code + " " + selected.address + " " + selected.name
+        @selected_address = selected.postal_code + " " + selected.address + " " + selected.name
       else
         render :new #エラー時には新しいページへ
       end
@@ -48,7 +48,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-        @order = Order.new
+    @order = Order.new
     #現在ログインしているユーザーのID
     @order.customer_id = current_customer.id
     @order.payment_method = params[:order][:payment_method]
@@ -74,19 +74,19 @@ class Public::OrdersController < ApplicationController
       #address_typeに応じて異なる配送先情報を@oederに設定
     case address_type
     when "customer_address" #カスタマーの登録住所を@orderに設定
-      @order.post_code = current_customer.post_code
+      @order.post_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     #フォームから送信されたregistered_address_idを使用し、登録済み住所情報をselectedに取得し、@orderに設定
     when "registered_address"
       Address.find(params[:order][:registered_address_id])
        selected = Address.find(params[:order][:registered_address_id])
-      @order.post_code = selected.post_code
+      @order.postal_code = selected.postal_code
       @order.address = selected.address
       @order.name = selected.name
     #フォームから送信された新しい住所情報を@orderに設定
     when "new_address"
-      @order.post_code = params[:order][:new_post_code]
+      @order.postal_code = params[:order][:new_post_code]
       @order.address = params[:order][:new_address]
       @order.name = params[:order][:new_name]
     end
