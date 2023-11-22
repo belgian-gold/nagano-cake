@@ -69,12 +69,6 @@ class Public::OrdersController < ApplicationController
       @order.total_payment = @order.postage + @cart_items_price
       # ユーザーが選択した支払い方法を設定
       @order.payment_method = params[:order][:payment_method]
-      # if @order.payment_method == "credit_card"
-      #   @order.status = 0 #クレジットカード
-      # else
-      #   @order.status = 1 #銀行振込
-      # end
-      # →newアクションで入力済みの為再度記述しなくてだいじょうぶ
 
       address_type = params[:order][:address_type]
       #address_typeに応じて異なる配送先情報を@oederに設定
