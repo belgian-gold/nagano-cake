@@ -26,14 +26,15 @@
             <% elsif %>
            <p><strong>販売停止</strong></p>
              <% end %>
-          
+
         </div>
       </div>
 
 
     <% end %>
+      <div class="pagination">
+  <%= paginate @items %>
+　　</div>
   </div>
-  <div>
-    <div>
-     <%= paginate @items %>
-    </div>
+
+  <br><br><br>
