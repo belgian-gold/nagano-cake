@@ -1,13 +1,26 @@
-<h1>商品一覧</h1>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+      <h3 class="border p-3 my-3">
+        商品一覧
+      </h3>
+  </div>
+　<div class="col-auto text-right p-3 my-3">
+      <button type="button" class="btn btn-outline-secondary btn-light rounded-circle p-0" style="width:2rem;height:2rem;">
+        <%= link_to "＋", new_admin_item_path, class:"text-secondary"%>
+      </button>
+  </div>
+</div>
 
-<table>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+<table class = "table">
   <thead>
     <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+      <th scope = "col">商品ID</th>
+      <th scope = "col">商品名</th>
+      <th scope = "col">税抜価格（円）</th>
+      <th scope = "col">ジャンル</th>
+      <th scope = "col">ステータス</th>
     </tr>
   </thead>
 
@@ -16,18 +29,20 @@
       <tr>
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= item.price %></td>
+        <td><%= item.price %>円</td>
         <td><%= item.genre.name %></td>
         <td>
           <% if item.is_sales_status %>
-          <strong>販売中</strong>
+          <p class = "text-success"><strong>販売中</strong></p>
           <% else %>
-          <strong>販売停止中</strong>
+          <p class = "text-secondary"><strong>販売停止中</strong></p>
           <% end %>
         </td>
       </tr>
     <% end %>
+</table>
 
-<table>
-  
-  <%#= paginate item %>
+<div class='container px-5 px-sm-0'>
+<div class='row'>
+  <p><%= paginate @items %></p>
+</div>
