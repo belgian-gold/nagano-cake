@@ -20,13 +20,13 @@ class Public::OrdersController < ApplicationController
      # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
     @cart_items_price = ary.sum
     # 支払い合計金額＝送料＋カート内商品の合計金額
-    @order.total_payment = @order.postage + @cart_items_price
+    @order.total_price = @order.postage + @cart_items_price
     # フォームから送信された注文の配送先情報を受け取る
     @address_type = params[:order][:address_type]
     # ↑に基づいて異なる配送先情報を設定
     case @address_type
     when "customer_address" #カスタマーの登録住所を使用
-      @selected_address = current_customer.post_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name
+      @selected_address = current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name
     when "registered_address" #登録済みの住所を使用
       unless params[:order][:registered_address_id] ==""
         #各条件内にて selected~ 選択された情報を格納
@@ -66,7 +66,7 @@ class Public::OrdersController < ApplicationController
       # ary.sumですべてのカートアイテムの金額を計算し、＠cart_items_priceに設定
       @cart_items_price = ary.sum
       #送料とカートアイテムの合計金額
-      @order.total_payment = @order.postage + @cart_items_price
+      @order.total_price = @order.postage + @cart_items_price
       # ユーザーが選択した支払い方法を設定
       @order.payment_method = params[:order][:payment_method]
 
