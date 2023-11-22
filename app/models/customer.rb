@@ -8,9 +8,9 @@ class Customer < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   # 会員:1はカートアイテム多
-  
+
   def active_for_authentication?
-    super && (is_membership_status == false)
+    super && (is_membership_status == true)
   end
-  
+
 end

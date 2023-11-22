@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :reject_customer, only: [:create]
+  before_action :customer_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -29,10 +29,12 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-  def reject_customer
-    @customer = Customer.find_by(email: params[:customer][:email])
-    if @customer
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_membership_status == false)
+  private
+
+  def customer_state
+    customer = Customer.find_by(email: params[:customer][:email])
+    if customer
+      if customer.valid_password?(params[:customer][:password]) && customer.is_membership_status == false
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
         redirect_to new_customer_registration_path
       else
