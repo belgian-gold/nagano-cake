@@ -17,17 +17,17 @@
 <% else %>
 <div class="container">
   <div class="row d-flex justify-content-between my-5 px-3">
-    <h3 class="border p-2">
+    <h3 class="border p-2 bg-white">
       ショッピングカート
     </h3>
     <div>
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？", class:"btn btn-danger" %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？", class:"btn btn-outline-danger" %>
     </div>
   </div>
 
   <div class="row">
    <div class="col">
-    <table class = "table table-bordered">
+    <table class = "table table-bordered bg-white">
      <thead class = "thead-secondary">
       <tr>
        <th>商品名</th>
@@ -52,7 +52,7 @@
              <% end %>
          </th>
          <th><%= cart_item.subtotal %>円</th>
-         <th><%= link_to "消去する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に消去しますか？", class:"btn btn-danger" %>
+         <th><%= link_to "消去する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に消去しますか？", class:"btn btn-outline-danger" %>
   　　     </th>
         </tr>
        <% end %>
@@ -64,9 +64,9 @@
       <%= link_to "買い物を続ける", root_path , class:"btn btn-primary" %>
     </div>
     <div class="col-3">
-      <table class="table table-bordered">
+      <table class="table table-bordered bg-white">
         <tr>
-          <th class="bg-secondary">合計金額</th>
+          <th class="bg-white">合計金額</th>
           <td><%= @cart_items.sum { |cart_item| cart_item.subtotal } %>円</td>
         </tr>
       </table>
