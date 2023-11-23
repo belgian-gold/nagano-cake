@@ -16,8 +16,33 @@
   </div>
 </div>
 
-    <div class="row">
-      <div class="col">
-        <h3 class="border-bottom">新着商品</h3>
-      </div>
-    </div>
+<div class="row">
+  <div class="col">
+    <h3 class="border-bottom">新着商品</h3>
+  </div>
+</div>
+    
+    
+<div class="row">
+  <div class="col md-1">
+   <div class="new-item-container">
+         <% @items.each do |item| %>
+          <div class="new_items">
+            <div class="hover">
+        <span><%= link_to item_path(item) do %><%= image_tag item.get_item_image, size: "180x150" %><% end %></span><br>
+        <span><%= link_to item.name, item_path(item), class:"link" %></span><br>
+        <span>￥<%= (item.price * 1.10).round %></span>
+        <% if item.is_sales_status %>
+        <% elsif %>
+        <p class="text-warning"><strong>販売停止</strong></p>
+        </div>
+          </div>
+      <% end %>
+  </div>
+ </div>
+</div>
+         <% end %>
+       <div>
+        <%= link_to "すべての商品を見る", items_path %>
+        </div>
+      

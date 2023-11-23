@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   # 商品:1、order_details(注文履歴の商品):多
   belongs_to :genre
   # 商品:多、ジャンル1
- 
+
 
   has_one_attached :item_image
   # 画像投稿の画像
@@ -28,5 +28,5 @@ class Item < ApplicationRecord
 
   def get_item_image
     (item_image.attached?) ? item_image: 'no_image.jpg'
- end
- end
+  end
+end
