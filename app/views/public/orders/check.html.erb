@@ -14,8 +14,7 @@
             <td>数量</td>
             <td>小計</td>
           </tr>
-        </thead>  
-        <!--カート内のアイテムをループ処理-->
+        </thead>
         <!--各アイテムの情報はカートアイテムモデルから取得-->
         <% @cart_items.each do |cart_item| %>
         <tr>
@@ -39,11 +38,11 @@
         </tr>
         <tr>
           <th class="bg-dark">商品合計</th>
-          <td><%= @order.total_payment - @order.postage %>円</td>
+          <td><%= @order.total_price - @order.postage %>円</td>
         </tr>
         <tr>
           <th class="bg-dark">ご請求額</th>
-          <td><%= @order.total_payment %>円</td>
+          <td><%= @order.total_price %>円</td>
         </tr>
       </table>
     </div>
