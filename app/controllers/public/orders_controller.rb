@@ -97,9 +97,9 @@ class Public::OrdersController < ApplicationController
     #saveが成功したら
       # if @order.status == 0
       # #製造ステータスが未着手である
-        # @cart_items.each do |cart_item|
-        #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
-        # end
+        @cart_items.each do |cart_item|
+          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
+        end
       # else #０以外の場合→製造開始である
         # @cart_items.each do |cart_item|
         #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 1)
