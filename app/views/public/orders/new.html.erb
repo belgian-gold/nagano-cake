@@ -5,7 +5,8 @@
       </h3>
   </div>
   
-  <h5>支払い方法</h5>
+  <%= form_with model: Order.new, url: orders_confirm_path, method: :post do |f| %>
+  <span>支払い方法</span>
   <div>
    <%= f.radio_button :payment_method, :true %>
    <%= f.label :payment_method, "クレジットカード", { value: :true }  %>
