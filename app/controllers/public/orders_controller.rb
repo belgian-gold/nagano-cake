@@ -116,8 +116,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    #ryon
+    #where〜 ログイン中の会員の注文のみを取得
+    #order(created_at: :desc) で最新の注文が最初に表示される
+    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page]).per(10)
+    # 顧客の注文履歴
+    # @index = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
+
 end
