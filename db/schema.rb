@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2023_11_22_054317) do
     t.integer "payment_method", default: 0, null: false
     t.integer "total_price", null: false
     t.integer "postage", null: false
-    t.string "addres", default: "", null: false
+    t.string "address", default: "", null: false
     t.string "postal_code", default: "", null: false
     t.string "name", default: "", null: false
     t.integer "is_order_status", default: 0, null: false

@@ -75,7 +75,7 @@ class Public::OrdersController < ApplicationController
       #address_typeに応じて異なる配送先情報を@oederに設定
     case address_type
     when "customer_address" #カスタマーの登録住所を@orderに設定
-      @order.post_code = current_customer.postal_code
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     #フォームから送信されたregistered_address_idを使用し、登録済み住所情報をselectedに取得し、@orderに設定
@@ -97,9 +97,9 @@ class Public::OrdersController < ApplicationController
     #saveが成功したら
       # if @order.status == 0
       # #製造ステータスが未着手である
-        @cart_items.each do |cart_item|
-          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
-        end
+        # @cart_items.each do |cart_item|
+        #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
+        # end
       # else #０以外の場合→製造開始である
         # @cart_items.each do |cart_item|
         #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 1)
