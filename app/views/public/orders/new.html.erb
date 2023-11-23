@@ -4,9 +4,10 @@
         注文情報入力
       </h3>
   </div>
-
+<div class="row d-flex justify-content-center">
+      
   <%= form_with model: Order.new, url: orders_check_path, method: :post do |f| %>
-  <span>支払い方法</span>
+  <b>支払い方法</b>
   <div>
   <%= f.radio_button :payment_method, :credit_card, checked: true %>
   <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card], {value: :credit_card} %>
@@ -15,22 +16,22 @@
       <%= f.label :payment_method, Order.payment_methods_i18n[:transfer], {value: :transfer} %>
   </div>
 
-  <span>お届け先</span>
+  <b>お届け先</b>
    <div>
     <%= f.radio_button :address_type, "customer_address", checked: true %>
     <%= f.label :address_type, "ご自身の住所" %><br>
     〒<%= current_customer.postal_code + " " + current_customer.address %><br>
     <%= current_customer.last_name + current_customer.first_name %>
-   </div>
-   <div>
+   <br>
      <%=f.radio_button :address_type, [:registered_address] %>
      <%= f.label :address_type, "登録済住所から選択" %>
      <br>
      <%= f.select :registered_address_id, current_customer.addresses.all.map { |m| [[m.postal_code, m.address, m.name].join(" "), m.id] } ,include_blank: "選択" %>
-   </div>
-   <div>
+     <br>
+     <br>
      <%= f.radio_button :address_type, "new_address" %>
      <%= f.label :address_type, "新しいお届け先" %>
+    </div>
      <table>
       <tr>
        <td>郵便番号（ハイフンなし）</td>
@@ -49,6 +50,7 @@
 
      </table>
    </div>
+   <br>
    <div class="row d-flex justify-content-center">
     <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
    </div>
