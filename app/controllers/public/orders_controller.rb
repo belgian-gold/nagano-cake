@@ -75,7 +75,7 @@ class Public::OrdersController < ApplicationController
       #address_typeに応じて異なる配送先情報を@oederに設定
     case address_type
     when "customer_address" #カスタマーの登録住所を@orderに設定
-      @order.post_code = current_customer.postal_code
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     #フォームから送信されたregistered_address_idを使用し、登録済み住所情報をselectedに取得し、@orderに設定
