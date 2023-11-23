@@ -97,9 +97,9 @@ class Public::OrdersController < ApplicationController
     #saveが成功したら
       # if @order.status == 0
       # #製造ステータスが未着手である
-        @cart_items.each do |cart_item|
-          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
-        end
+        # @cart_items.each do |cart_item|
+        #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
+        # end
       # else #０以外の場合→製造開始である
         # @cart_items.each do |cart_item|
         #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 1)
@@ -116,8 +116,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    #ryon
+    #where〜 ログイン中の会員の注文のみを取得
+    #order(created_at: :desc) で最新の注文が最初に表示される
+    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page]).per(10)
+    # 顧客の注文履歴
+    # @index = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
+
 end
