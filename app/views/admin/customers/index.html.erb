@@ -1,2 +1,34 @@
-<h1>Adimin::Customers#index</h1>
-<p>Find me in app/views/adimin/customers/index.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">会員一覧</h5>
+  </div>
+
+  <div class="row">
+    <table>
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer) %></td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_membership_status %>
+              <p>有効</p>
+            <% else %>
+              <p>退会</p>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
