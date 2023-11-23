@@ -1,2 +1,65 @@
-<h1>Adimin::Customers#edit</h1>
-<p>Find me in app/views/adimin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">会員情報編集</h5>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+      <table class="table table-borderless">
+
+        <tr>
+          <td>会員ID</td>
+          <td><%= @customer.id %></td>
+        </tr>
+
+        <tr>
+          <td>氏名</td>
+          <td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
+        </tr>
+
+        <tr>
+          <td>氏名（カナ）</td>
+          <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
+        </tr>
+
+        <tr>
+          <td>郵便番号</td>
+          <td><%= f.text_field :postal_code %></td>
+        </tr>
+
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address %></td>
+        </tr>
+
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.text_field :telephone_number %></td>
+        </tr>
+
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.text_field :email %></td>
+        </tr>
+
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <%= f.radio_button :is_membership_status, :true %>
+            <%= label :is_membership_status, "有効" , { value: :true } %>
+
+            <%= f.radio_button :is_membership_status, :false %>
+            <%= label :is_membership_status, "退会" , { value: :false } %>
+          </td>
+        </tr>
+
+      </table>
+
+      <div class="row d-flex justify-content-center">
+        <tr>
+          <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+        </tr>
+      </div>
+    <% end %>
+  </div>
+</div>
