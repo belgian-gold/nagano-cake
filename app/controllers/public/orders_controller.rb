@@ -36,8 +36,8 @@ class Public::OrdersController < ApplicationController
         render :new #エラー時には新しいページへ
       end
     when "new_address" #新しい住所を使用
-      unless params[:order][:new_post_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-        @selected_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
+      unless params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
+        @selected_address = params[:order][:new_postal_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
       else
         render :new #エラー時には新しいページへ
       end
