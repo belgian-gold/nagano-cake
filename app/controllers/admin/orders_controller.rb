@@ -1,26 +1,23 @@
 class Admin::OrdersController < ApplicationController
 def index
-    @customer = Customer.find(params[:id])
-    @orders = @customer.orders.all
   end
 
   def show
-    @order = Order.find(params[:id])
-    # @customer = Customer.find(params[:id])
-    @order_details = @order.order_details
-    @postage = 800
-    @subtotal = @order.total_payment - @postage
+     @order =Order.find(params[:id])
+     #@order_details= OrderDetail.where(order_id: @order.id)
+     @order_details = @order.order_details
   end
 
   def update
-    @order = Order.find(params[:id])
-    @order_details = OrderDetail.where(order_id: params[:id])
+     @order = Order.find(params[:id])
+    @order_details = @order.order_details
     @order.update(order_params)
-
-    if @order.status == "confirm_payment"
-       @order_details.update(production_status:'waiting_for_production')
+    if @order.status == "confirmation"
+      @order_details.each do |order_detail|
+        order_detail.making_status = 1
+        order_detail.update(order_detail_params)
+      end
     end
-
       redirect_to admin_order_path(@order)
   end
 
