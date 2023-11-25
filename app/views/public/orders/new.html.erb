@@ -5,7 +5,7 @@
       </h3>
   </div>
 <div class="row d-flex justify-content-center">
-      
+
   <%= form_with model: Order.new, url: orders_check_path, method: :post do |f| %>
   <b>支払い方法</b>
   <div>
@@ -49,10 +49,11 @@
       </tr>
 
      </table>
-   </div>
+
    <br>
    <div class="row d-flex justify-content-center">
     <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+   </div>
    </div>
 
 <% end %>
