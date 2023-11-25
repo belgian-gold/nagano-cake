@@ -19,34 +19,31 @@
 
 
 <div class="container new-item">
-<div class="row">
-  <div class="col">
-    <h3 class="border-bottom">新着商品</h3>
+  <div class="row">
+    <div class="col">
+      <h3 class="border-bottom">新着商品</h3>
+    </div>
   </div>
-</div>
-<div class="row">
- <% @items.each do |item| %>
-  <div class="col-md-3 col-sm-6">
-     <div class="card w-100 bg-transparent border-0">
-       <div class="card-body">
-         <%= link_to item_path(item) do %>
-          <div class="item-image text-center">
-            <div class="col-20">
-           <%= image_tag item.get_item_image, size: "200x200", class: "img-fluid", style: "max-width: 100%; height: auto;" %></br>
-           <div>
-            <div class="card-text"><%= link_to item.name, item_path(item), class:"link" %></div>
-             <div class="card-text">￥<%= (item.price * 1.10).round %></div>
-           </div>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3 col-sm-6">
+        <div class="card w-100 bg-transparent border-0">
+          <div class="card-body">
+            <%= link_to item_path(item) do %>
+              <div class="item-image text-center">
+                <%= image_tag item.get_item_image, size: "200x200", class: "img-fluid", style: "max-width: 100%; height: auto;" %></br>
+                <div class="card-text"><%= link_to item.name, item_path(item), class:"link" %></div>
+                <div class="card-text">￥<%= (item.price * 1.10).round %></div>
+              </div>
+            <% end %>
           </div>
-      <% end %>
-       </div>
-     </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="text-right">
+      <%= link_to "すべての商品を見る", items_path, style: "text-decoration: underline;" %>
+    </div>
+    <br> <br> <br>
   </div>
 </div>
-
-<% end %>
- <div class="text-right">
-  <%= link_to "すべての商品を見る", items_path, style: "text-decoration: underline;" %>
- </div>
- <br> <br> <br>
- </div>
