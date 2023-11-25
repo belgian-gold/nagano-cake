@@ -1,40 +1,39 @@
-<div>
+<div class="container">
+  <div class="row mb-3">
     <h4>商品一覧</h4>
-    <h5>(全<%= @all_items.count %>件)</h5>
+    <h5 class="d-flex align-items-center mb-0">(全<%= @all_items.count %>件)</h5>
   </div>
   <br>
-  <div>
-
-
-    <% @items.each do |item| %>
-
-      <div>
-        <%= link_to item_path(item) do %>
-          <%= image_tag item.get_item_image, size: "180x150" %>
-        <% end %>
-
-        <div>
-          <span>
-            <%= link_to item_path(item.id) do %>
-            <%= item.name %>
-            <% end %>
-          </span>
-          <br>
-          <span>￥<%= (item.price * 1.10).round %></span>
-           <% if item.is_sales_status %>
-           <p><strong>販売中</strong></p>
-            <% elsif %>
-           <p><strong>販売停止</strong></p>
-             <% end %>
-
-        </div>
-      </div>
-
-
-    <% end %>
-      <div class="pagination">
+  
+<div class="row">
+  <div class="d-flex flex-wrap">
+  <% @items.each do |item| %>
+     <div class="col-3">
+       <div>
+         <%= link_to item_path(item) do %>
+         <%= image_tag item.get_item_image, size: "180x150" %>
+         <% end %>
+       </div>
+       <span class="mb-0 font-weight-bold">>
+         <%= link_to item_path(item.id) do %>
+         <%= item.name %>
+         <% end %>
+       </span>
+         <br>
+       <span>￥<%= (item.price * 1.10).round %></span>
+         <% if item.is_sales_status %>
+         <p><strong>販売中</strong></p>
+         <% elsif %>
+         <p><strong>販売停止</strong></p>
+         <% end %>
+     </div>
+     <% end %>
+   </div>
+</div>
+</div>
+<br><br><br>
+<div class="pagination justify-content-center">
   <%= paginate @items %>
-　　</div>
-  </div>
+</div>
 
   <br><br><br>
