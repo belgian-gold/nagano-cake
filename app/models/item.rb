@@ -24,6 +24,7 @@ class Item < ApplicationRecord
  validates :name_explanation, presence: true
  validates :genre_id, presence: true
  validates :price, presence: true
+
 # def get_item_image(width, height)
 #     unless image.attached?
 #       file_path = Rails.root.join('app/assets/images/no_image.jpg')
