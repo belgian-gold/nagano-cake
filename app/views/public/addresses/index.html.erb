@@ -1,11 +1,11 @@
 <div class="container">
-  <div>
-    <h5>配送先登録/一覧</h5>
+  <div class="row d-flex justify-content-center">
+    <h5 class="border p-3 my-3">配送先登録/一覧</h5>
   </div>
 
   <%= form_with model: @new_address do |f| %>
-    <div class="row">
-      <table>
+    <div class="row mx-auto">
+      <table class="table">
         <tr>
           <td><%= f.label :"郵便番号" %></td>
           <td><%= f.text_field :postal_code %></td>
@@ -19,6 +19,9 @@
         <tr>
           <td><%= f.label :"宛名" %></td>
           <td><%= f.text_field :name %></td>
+        </tr>
+
+        <tr>
           <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
         </tr>
 
@@ -26,8 +29,8 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <table>
+  <div class="row mx-auto">
+    <table class="table">
       <thead>
         <tr>
           <th>郵便番号</th>
@@ -41,11 +44,14 @@
           <td><%= address.postal_code %></td>
           <td><%= address.address %></td>
           <td><%= address.name %></td>
-          <td>
-            <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
-            <%= link_to "削除する", address_path(address.id), class: "btn btn-success", method: :delete, data: { confirm: "本当に削除しますか？" } %>
-          </td>
+        </tr>
+
+        <tr>
+          <td><%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %></td>
+          <td><%= link_to "削除する", address_path(address.id), class: "btn btn-success", method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+          <td></td>
         </tr>
       <% end %>
     </table>
   </div>
+</div>
