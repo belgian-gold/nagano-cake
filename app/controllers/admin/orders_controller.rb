@@ -14,8 +14,8 @@ end
     @order.update(order_params)
     if @order.is_order_status == "confirmation"
       @order_details.each do |order_detail|
-      order_detail.is_production_status = 1
-      order_detail.update(order_detail_params)
+        order_detail.is_production_status = 1
+        order_detail.update(order_detail_params)
       end
     end
       redirect_to admin_order_path(@order)

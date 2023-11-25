@@ -95,16 +95,16 @@ class Public::OrdersController < ApplicationController
 
     if @order.save
     #saveが成功したら
-      # if @order.status == 0
+      if @order.is_order_status == 0
       # #製造ステータスが未着手である
         @cart_items.each do |cart_item|
-          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, is_order_status: 0)
+          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, is_production_status: 0)
         end
-      # else #０以外の場合→製造開始である
-        # @cart_items.each do |cart_item|
-        #   OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 1)
-        # end
-      # end
+      else #０以外の場合→製造開始である
+        @cart_items.each do |cart_item|
+          OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, is_production_status: 1)
+        end
+      end
       # 注文処理後、カート内を全て削除
       @cart_items.destroy_all
       # 注文正常処理後、注文完了を知らせる
