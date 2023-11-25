@@ -100,7 +100,7 @@ class Public::OrdersController < ApplicationController
         @cart_items.each do |cart_item|
           OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, is_production_status: 0)
         end
-      # else #０以外の場合→製造開始である
+      else #０以外の場合→製造開始である
         @cart_items.each do |cart_item|
           OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, is_production_status: 1)
         end
