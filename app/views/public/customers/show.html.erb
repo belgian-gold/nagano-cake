@@ -4,10 +4,10 @@
   </div>
 
   <div class="row d-flex justify-content-center">
-    <div class="col-md-7">
+    <div class="col-md-7 text-center">
       <h5><b>登録情報<%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success" %></b></h5>
 
-      <table>
+      <table class="table">
 
         <tr>
           <th>氏名</th>
@@ -39,17 +39,17 @@
           <td><%= @customer.email %></td>
         </tr>
 
+        <tr>
+          <th>配送先</th>
+          <td><%= link_to "一覧を見る", addresses_path, class:"btn btn-primary ml-3" %></td>
+        </tr>
+
+        <tr>
+          <th>注文履歴</th>
+          <td><%= link_to "一覧を見る", orders_path, class:"btn btn-primary ml-3" %></td>
+        </tr>
+
       </table>
     </div>
-  </div>
-
-  <div class="row d-flex justify-content-center">
-    <h5><b>配送先</b></h5>
-    <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary ml-3" %>
-  </div>
-
-  <div class="row d-flex justify-content-center">
-    <h5><b>注文履歴</b></h5>
-    <%= link_to "一覧を見る", orders_path, class:"btn btn-primary ml-3" %>
   </div>
 </div>
