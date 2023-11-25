@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-      <h3 class="border p-3 my-3 bg-light">
+      <h3 class="border-bottom p-3 my-3  bg-white text-secondary">
         商品新規作成
       </h3>
   </div>
 
-<%#= render "layouts/errors", obj: @item %>
+<%= render "layouts/errors", obj: @item %>
 
   <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
       <table class="table table-borderless">
@@ -50,9 +50,11 @@
     </table>
     <div class="row d-flex justify-content-center">
       <tr>
-        <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+        <td><%= f.submit "新規登録",  class:"btn btn-success" %></td>
       </tr>
     </div>
     <% end %>
     </div>
   </div>
+  
+  <br><br><br>
