@@ -49,7 +49,7 @@
          <th class = "text-secondary"><%= form_with(model: cart_item, url: cart_item_path(cart_item.id), method: :patch) do |f| %>
                <%= f.select :amount, *[1..50] %>
                <%= f.submit "変更" , class:"btn btn-outline-success" %>
-             <% end %>
+         <% end %>
          </th>
          <th class = "text-secondary"><%= cart_item.subtotal %>円</th>
          <th><%= link_to "消去する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に消去しますか？", class:"btn btn-outline-danger" %>
