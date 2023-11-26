@@ -12,13 +12,14 @@ ja:
         preparing: "発送準備中"
         shipped: "発送済み"
 
-    order_details: #テーブル
+
+    order_detail: #テーブル
       is_production_status: #カラム名
         cannot_start: "着手不可"
         waiting: "製作待ち"
         production: "製作中"
         completed: "製作完了"
-        # is_production_status: { cannot_start: 0, waiting: 1, production: 2, completed: 3 }
+ 
 
   activerecord:
     errors:
