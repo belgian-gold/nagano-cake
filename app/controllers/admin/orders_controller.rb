@@ -12,13 +12,13 @@ end
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @order.update(order_params)
-    if @order.is_order_status == "confirmation"
-      @order_details.each do |order_detail|
-        order_detail.is_production_status = 1
-        order_detail.update(order_detail_params)
+      if @order.is_order_status == "confirmation"
+        @order_details.each do |order_detail|
+          order_detail.is_production_status = 1
+          order_detail.update(order_detail_params)
+        end
       end
-    end
-      redirect_to admin_order_path(@order)
+         redirect_to admin_order_path(@order)
   end
 
 private
@@ -28,8 +28,7 @@ private
   end
 
   def order_detail_params
-    params.permit(:is_production_status)
+    params.require(:order_detail).permit(:is_production_status)
   end
-
-
+  
 end
