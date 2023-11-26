@@ -45,7 +45,7 @@ private
   end
 
   def order_detail_params
-    params.permit(:is_production_status)
+   params.permit(:is_production_status)
   end
 
 
