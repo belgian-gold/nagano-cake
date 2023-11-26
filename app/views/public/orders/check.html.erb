@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-8">
       <table class="table">
-        <thead class="bg-dark">
+        <thead class="bg-transparent">
           <tr>
             <td>商品名</td>
             <td>単価(税込)</td>
@@ -33,16 +33,16 @@
     <div class="col-4">
       <table class="table table-bordered border-info">
         <tr>
-          <th class="bg-dark">送料</th>
-          <td><%= @order.postage %>円</td>
+          <th class="bg-transparent">送料</th>
+          <td class="bg-light"><%= @order.postage %>円</td>
         </tr>
         <tr>
-          <th class="bg-dark">商品合計</th>
-          <td><%= @order.total_price - @order.postage %>円</td>
+          <th class="bg-transparent">商品合計</th>
+          <td class="bg-light"><%= @order.total_price - @order.postage %>円</td>
         </tr>
         <tr>
-          <th class="bg-dark">ご請求額</th>
-          <td><%= @order.total_price %>円</td>
+          <th class="bg-transparent">ご請求額</th>
+          <td class="bg-light"><%= @order.total_price %>円</td>
         </tr>
       </table>
     </div>
