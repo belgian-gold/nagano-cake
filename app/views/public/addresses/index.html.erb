@@ -3,6 +3,15 @@
     <h5 class="border p-3 my-3">配送先登録/一覧</h5>
   </div>
 
+<% if @new_address.errors.any? %>
+  <%= @new_address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @new_address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   <%= form_with model: @new_address do |f| %>
     <div class="row mx-auto">
       <table class="table">
