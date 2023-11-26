@@ -12,7 +12,7 @@ ja:
         preparing: "発送準備中"
         shipped: "発送済み"
 
-    order_details: #テーブル
+    order_detail: #テーブル
       is_production_status: #カラム名
         cannot_start: "着手不可"
         waiting: "製作待ち"
