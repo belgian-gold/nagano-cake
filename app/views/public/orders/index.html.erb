@@ -36,9 +36,7 @@
           <td><%= order.total_price %>円</td>
           <!--注文ステータスを表示-->
           <!--status_i18n メソッドでステータスを国際化されたテキストに変換表示-->
-
           <td><%= order.is_order_status_i18n %></td>
-
           <!--注文の詳細を表示するリンク-->
           <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
         </tr>

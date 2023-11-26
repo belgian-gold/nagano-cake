@@ -62,15 +62,15 @@
               <li class="nav-item">
                 <%= link_to 'About', about_path, class: "btn btn-outline-dark mr-1" %>
               </li>
-              
+
               <li class="nav-item">
                 <%= link_to '商品一覧', items_path, class: "btn btn-outline-dark mr-1" %>
               </li>
-              
+
               <li class="nav-item">
                 <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-outline-dark mr-1" %>
               </li>
-              
+
               <li class="nav-item">
                 <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-outline-dark" %>
               </li>
@@ -86,7 +86,7 @@
     <% if flash[:notice] %>
       <div class="flash-notice"><%= flash[:notice] %></div>
     <% end %>
-  
+
     <%= yield %>
   </main>
     <footer class="fixed-bottom text-center">
