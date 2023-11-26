@@ -33,11 +33,11 @@
       <% @order_details.each do |order_detail| %>
       <tr>
       <td><%= order_detail.item.name %></td>
-      <td><%= (order_detail.item.with_tax_price * 1.10).floor %></td>
+      <td><%= (order_detail.item.with_tax_price).floor %>円</td>
       <td><%= order_detail.amount %></td>
-      <td><%= order_detail.amount * (order_detail.item.with_tax_price * 1.10).floor %></td>
-      <td><%= form_with model: order_detail, url: admin_order_path(order_detail), method: :patch do |f| %>
-          <%= f.select :is_production_status, OrderDetail.is_production_statuses_i18n, class: "form-control" %>
+      <td><%= order_detail.amount * (order_detail.item.with_tax_price).floor %>円</td>
+      <td><%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+          <%= f.select :is_production_status, OrderDetail.is_production_statuses.keys.map {|k| [I18n.t("enums.order_detail.is_production_status.#{k}"), k]} %>
           <%= f.submit "更新", class: "btn btn-primary" %>
           <% end %>
       </td>
@@ -48,14 +48,14 @@
     <table class="table">
       <tr>
         <td>商品合計</td>
-        <td><%= @order.total_price %></td>
+        <td><%= @order.total_price - @order.postage %>円</td>
       </tr>
       <tr>
         <td>配送料</td>
-        <td><%= @order.postage %></td>
+        <td><%= @order.postage %>円</td>
       </tr>
       <tr>
         <td>ご請求額</td>
-        <td><%= @order.total_price + @order.postage %></td>
+        <td><%= @order.total_price - @order.postage + @order.postage %>円</td>
       </tr>
     </table>
