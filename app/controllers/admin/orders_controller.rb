@@ -19,27 +19,14 @@ end
       end
     end
       redirect_to admin_order_path(@order)
-
   end
-   redirect_to admin_order_path(@order)
- end
-
- # private
- # def order_params
- #  params.require(:order).permit(:is_order_status)
- # end
-
-
-private
-
-
+  
+  private
   def order_params
-    params.require(:order).permit(:is_order_status)
+   params.require(:order).permit(:is_order_status)
   end
 
   def order_detail_params
-    params.permit(:is_production_status)
+   params.permit(:is_production_status)
   end
-
-
-end
+ end
