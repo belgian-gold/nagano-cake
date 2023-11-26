@@ -10,16 +10,16 @@ class Admin::OrderDetailsController < ApplicationController
       @order.update(is_order_status: "preparing") if is_updated
 
     end
-    redirect_to admin_order_path(@order)
+  redirect_to admin_order_path(@order)
   end
 
-  private
-  def order_detail_params
-    params.require(:order_detail).permit(:is_production_status)
-  end
+ private
+ def order_detail_params
+  params.require(:order_detail).permit(:is_production_status)
+ end
 
-  def order_params
-    params.permit(:is_order_status)
-  end
+ def order_params
+  params.permit(:is_order_status)
+ end
 
 end
