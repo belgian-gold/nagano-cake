@@ -1,0 +1,43 @@
+def update
+  @order = Order.find(params[:id])
+  @order_details = @order.order_details
+
+  @order.update(order_params)
+
+  if @order.is_order_status == "confirmation"
+    @order_details.each do |order_detail|
+      order_detail.is_production_status = params[:order_detail][:is_production_status]
+      order_detail.update(order_detail_params)
+    end
+  end
+
+  redirect_to admin_order_path(@order)
+end
+
+private
+
+def order_params
+  params.require(:order).permit(:is_order_status)
+end
+
+def order_detail_params
+  params.require(:order_detail).permit(:is_production_status)
+end
+
+
+
+
+
+<% @order_details.each do |order_detail| %>
+      <tr>
+      <td><%= order_detail.item.name %></td>
+      <td><%= (order_detail.item.with_tax_price * 1.10).floor %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= order_detail.amount * (order_detail.item.with_tax_price * 1.10).floor %></td>
+      <td><%= form_with model: order_detail, url: admin_order_path(order_detail), method: :patch do |f| %>
+          <%= f.select :is_production_status, OrderDetail.is_production_status_i18n, class: "form-control" %>
+          <%= f.submit "更新", class: "btn btn-primary" %>
+          <% end %>
+      </td>
+    </tr>
+    <% end %>
