@@ -18,6 +18,7 @@ class Item < ApplicationRecord
       (price * 1.1).floor
   end
 
+# enum is_production_status: { cannot_start: 0, waiting: 1, production: 2, completed: 3 }
 
  validates :item_image, presence: true
  validates :name, presence: true
