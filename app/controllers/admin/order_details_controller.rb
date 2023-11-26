@@ -9,9 +9,9 @@ class Admin::OrderDetailsController < ApplicationController
       is_updated = @order_details.all? { |order_detail| order_detail.is_production_status == "completed" }
       @order.update(is_order_status: "preparing") if is_updated
 
-  end
+    end
   redirect_to admin_order_path(@order)
- end
+  end
 
  private
  def order_detail_params
