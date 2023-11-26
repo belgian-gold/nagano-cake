@@ -31,10 +31,8 @@ end
       redirect_to admin_order_path(@order)
   end
 
-
   def order_params
     params.require(:order).permit(:is_order_status)
->>>>>>> develop
   end
 
   def order_detail_params

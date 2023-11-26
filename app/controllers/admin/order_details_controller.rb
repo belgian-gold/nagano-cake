@@ -1,5 +1,4 @@
 class Admin::OrderDetailsController < ApplicationController
-
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
@@ -22,16 +21,5 @@ class Admin::OrderDetailsController < ApplicationController
   def order_params
     params.permit(:is_order_status)
   end
-  redirect_to admin_order_path(@order)
- end
-
- private
- def order_detail_params
-  params.require(:order_detail).permit(:is_production_status)
- end
-
- def order_params
-  params.permit(:is_order_status)
- end
 
 end
