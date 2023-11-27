@@ -1,6 +1,6 @@
-<div>
-  <div>
-    <div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
       <%= image_tag @item.get_item_image, size: "600x400"%>
     </div>
     <div>
@@ -23,7 +23,7 @@
                     <%= f.hidden_field :customer_id, :value => current_customer.id %>
                     <%= f.hidden_field :item_id, :value => @item.id %>
                     <%= f.select :amount, *[1..50] , prompt: "個数選択" %>
-                    <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+                    <%= f.submit "カートに入れる", class: "btn btn-outline-primary" %>
                   <% end %>
                 </p>
               <% else %>
