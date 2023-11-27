@@ -1,18 +1,18 @@
-<div>
-  <div>
-    <div>
-      <%= image_tag @item.get_item_image, size: "600x400"%>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= image_tag @item.get_item_image, size: "500x400"%>
     </div>
-    <div>
-      <table>
+   <div class="col-md-6">
+       <table class="table table-borderless">
         <tr>
-          <td><h3><%= @item.name %></h3></td>
+          <td><h3 style="font-weight: bold;"><%= @item.name %></h3></td>
         </tr>
         <tr>
           <td><h4><%= @item.name_explanation %></h4></td>
         </tr>
         <tr>
-          <td><h3>¥<%= @item.with_tax_price %>(税込)</h3></td>
+          <td><h3 style="font-weight: bold;">¥<%= @item.with_tax_price %>(税込)</h3></td>
         </tr>
         <tr>
           <td>
